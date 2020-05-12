@@ -1,0 +1,27 @@
+body{
+    font-size: 24px;
+    margin-top: 50px;
+    margin-left: 50px;
+}
+
+#canvas {
+    width: 500px;
+    padding: 200px 20px;
+    text-align: center;
+    border: 1px solid #333;
+}
+
+span {
+    background-color: green;
+    color: honeydew;
+    cursor: pointer;
+}
+
+.available span {
+    background-color: red;
+}
+
+.nearby span::after {
+    content: "nearby";
+    margin-left: 10px;
+}

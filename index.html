@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>test Vuejs</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="row container">
+        <div class="col-6" style="border-right: 1px solid black;">
+            <h2>demo căn bản</h2>
+            <div id="app" class="">
+                {{ message }}
+            </div>
+        
+            <div id="app-2" class="">
+                <span v-bind:title="message">
+                    Re chuot de thay thay doi
+                </span>
+            </div>
+        
+            <div class="" id="app-3">
+                <span v-if="seen">Ẩn hiện</span>
+            </div>
+        
+            <div class="" id="app-4">
+                <ol>
+                    <li v-for="todo in todos">
+                        {{todo.text}}
+                    </li>
+                </ol>
+            </div>
+        
+            <div class="" id="app-5">
+                <p> {{ message }}</p>
+                <button v-on:click="reverseMessage"> Reverse String</button>
+            </div>
+        
+            <div class="" id="app-6">
+                <p> {{ message }}</p>
+                <input v-model="message">
+            </div>
+            <div class="" id="app-7">
+                nhung thu ho mua
+                <ol>
+                    <todo-item  v-for="item in groceryList"
+                    v-bind:todo="item"
+                    v-bind:key="item.id">
+                    </todo-item>
+                </ol>
+            </div>
+        
+            <p>Sử dụng cú pháp mustache: {{ rawHtml }}</p>
+            <p>Sử dụng directive v-html: <span v-html="rawHtml"></span></p>
+            
+            <div class="" id="app-8">
+                <p>Thong diep ban dau: {{ message }}</p>
+                <p>Thong diep sau khi bi dao nguoc: {{ reverseMessage }}</p>
+            </div>
+            <div class="" id="vue-app1">
+                <h1>Conditionals</h1>
+                <button @click="error = !error">Toggle Error</button>
+                <button @click="success = !success">Toggle Success</button>
+                <p v-if="error"> Error</p>
+                <p v-else-if="success"> Success</p>
+
+                <h1>Looping with v-for</h1>
+                <ul>
+                    <li v-for="(character, index) in characters"> {{ index }} {{ character }}</li>
+                </ul>
+
+                <ul>
+                    <li v-for="(ninja, index) in ninjas">
+                       {{ index }} . {{ ninja.name }} - {{ ninja.age }}
+                    </li>
+                </ul>
+
+                <template v-for="ninja in ninjas">
+                    <div class="" v-for="(val, key) in ninja">
+                        {{ key }} - {{ val }}
+                    </div>
+                </template>
+            </div>
+
+            <h1>Intro to Components</h1>
+            <div id="intro-com">
+                <div id="appvue-1">
+                    <h5>Vue app 1</h5>
+                    <greeting></greeting>
+                </div>
+                <div id="appvue-2">
+                    <h5>Vue app 2</h5>
+                    <greeting></greeting>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <h2>demo component</h2>
+            <div id="components-demo">
+                <button-counter></button-counter>
+                <button-counter></button-counter>
+                <button-counter></button-counter>
+            </div>
+
+            <div class="" id="blog-post-list">
+                <blog-post v-for= "post in posts" 
+                        v-bind:key="post.id" 
+                        v-bind:title="post.title"></blog-post>
+            </div>
+
+            <div class="" id="vue-app">
+                <h1>Event</h1>
+                <button @click.once="add(1)">Add a year</button>
+                <button v-on:click="subtract(1)">Subtract a year</button>
+                <button @dblclick="add(10)">Add 10 years</button>
+                <button v-on:dblclick="subtract(10)">Subtract 10 years</button>
+                <p>My age is {{ age }}</p>
+
+                <div class="" id="canvas" v-on:mousemove="updateXY">
+                    {{ x }}, {{ y }}
+                </div>
+
+                <a @click.prevent="click" href="http://google.com">Google link</a>
+
+                <h1>Keyboard Events</h1>
+                <label>Name: </label>
+                <p>{{ name }}</p>
+                <input type="text" v-model="name">
+                <label>Age: </label>
+                <p>{{ age }}</p>
+                <input type="text" v-model="age">
+
+                <h1>Dynamic Css</h1>
+                <h2>Example 1</h2>
+                <!-- <div @click="{available = !available}" v-bind:class="{available : available}">
+                    <span>hai dz</span>
+                </div> -->
+                <h2>Example 2</h2>
+                <button @click="nearby = !nearby">Toggle nearby</button>
+                <button @click="available = !available">Toggle available</button>
+                <div class="" v-bind:class="compClasses">
+                    <span>Hai dz</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="app.js"></script>
+</html>

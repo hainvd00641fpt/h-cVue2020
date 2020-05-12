@@ -1,0 +1,27 @@
+#bag {
+    width: 200px;
+    height: 300px;
+    background-color: khaki;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+#bag.burst {
+    background-color: chartreuse;
+}
+
+#bag-health {
+    margin: 0px auto 20px auto;
+    width: 200px;
+    border: 1px solid black;
+}
+
+#bag-health div{
+    background-color: red;
+    height: 20px;
+}
+
+#control {
+    width: 120px;
+    margin: 0 auto;
+}

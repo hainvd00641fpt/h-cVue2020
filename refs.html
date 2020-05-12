@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <div id="Vue-app">
+        <p>Refs demo</p>
+        <input type="text" ref="input">
+        <button @click="readRef()">Submit</button>
+        <p>you fav food : {{ output }}</p>
+        <div ref="test">Hello</div>
+        </p>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: '#Vue-app',
+        data: {
+            output: 'fish'
+        },
+        methods: {
+            readRef: function(){
+                console.log(this.$refs.test.innerText);
+                console.log(this.$refs.input.value);
+                this.output = this.$refs.input.value;
+            }
+        }
+    })
+</script>
+</html>
